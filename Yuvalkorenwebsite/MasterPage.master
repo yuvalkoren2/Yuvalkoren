@@ -8,13 +8,24 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
+<body border="1">
+    <table>
+        <tr>
+            <td>
+                <a href="form.aspx">form.aspx</a>
+                <a href="about.aspx">about.aspx</a>
+                <a href="gallery.aspx">gallery.aspx</a>
+                <a href="login.aspx">login.aspx</a>
+            </td>
+        </tr>
+        <tr>
+    <td>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-          
-        </asp:ContentPlaceHolder>
-    </div>
-    </form>
+  
+</asp:ContentPlaceHolder>
+    </td>
+</tr>
+        
+   </table>
 </body>
 </html>
