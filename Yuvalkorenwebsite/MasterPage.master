@@ -15,7 +15,18 @@
                 <a href="form.aspx">form.aspx</a>
                 <a href="about.aspx">about.aspx</a>
                 <a href="gallery.aspx">gallery.aspx</a>
+                <a href="register.aspx">login.aspx</a>
                 <a href="login.aspx">login.aspx</a>
+                <a href="administration.aspx">administration.aspx</a>
+                <a href="simplesearch.aspx">administration.aspx</a>
+                <a href="complicatedsearch.aspx">complicatedsearch.aspx</a>
+                <a href="simplesearchlike.aspx">simplesearchlike.aspx</a>
+                <a href="complicatedsearchlike.aspx">complicatedsearchlike.aspx</a>
+                <a href="detailsUpdate.aspx">detailsUpdate.aspx</a>
+                <a href="exit.aspx">exit.aspx</a>
+
+
+
             </td>
         </tr>
         <tr>
