@@ -9,13 +9,14 @@
     </asp:ContentPlaceHolder>
 </head>
 <body border="1">
+    <h1>MOOVIES</h1>
     <table>
         <tr>
             <td>
                 <a href="form.aspx">form.aspx</a>
                 <a href="about.aspx">about.aspx</a>
                 <a href="gallery.aspx">gallery.aspx</a>
-                <a href="register.aspx">login.aspx</a>
+                <a href="register.aspx">register.aspx</a>
                 <a href="login.aspx">login.aspx</a>
                 <a href="administration.aspx">administration.aspx</a>
                 <a href="simplesearch.aspx">administration.aspx</a>
@@ -31,9 +32,11 @@
         </tr>
         <tr>
     <td>
+        <center>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
   
 </asp:ContentPlaceHolder>
+            </center>
     </td>
 </tr>
         
