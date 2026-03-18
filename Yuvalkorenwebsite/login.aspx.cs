@@ -12,24 +12,32 @@ public partial class login : System.Web.UI.Page
     {
         if (Page.IsPostBack)
         {
-           
-            string gmail = Request.Form["pass"];
+
+            string gmail = Request.Form["Email"];
             string password = Request.Form["Password"];
 
-
-            // בדיקת משתמש רגיל
-            string sqlSelect =
-                "SELECT * FROM tUsers " +
-                "WHERE Email = N'" + gmail + "' " +
-                "AND UserPassword = N'" + password + "'";
-
-            bool userExists = MyAdoHelper.IsExist(sqlSelect);
-
-            if (!userExists)
-                stResult = "אימייל או סיסמה שגויים";
+//           qqהתחברות מנהל
+            if (gmail == "yuvalk@gmail.com" && password == "menahel")
+            {
+                Response.Redirect("manager.aspx");
+            }
             else
-                stResult = "משתמש רשום";
+            {
 
+
+                string sqlSelect =
+                "SELECT * FROM tUsers " +
+                "WHERE gmail = N'" + gmail + "' " +
+                "AND password = N'" + password + "'";
+
+                bool userExists = MyAdoHelper.IsExist(sqlSelect);
+
+                if (!userExists)
+                    stResult = "אימייל או סיסמה שגויים";
+                else
+                    stResult = "משתמש רשום";
+
+            }
         }
     }
 }

@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <form runat="server" method="post">
      <table style="width: 100%; max-width: 400px;">
                         </tr>
                     <td><label>Email</label></td>
@@ -18,6 +19,8 @@
            
             </td>
          </tr>
+         </table>
+        </form>
            
 </asp:Content>
 
