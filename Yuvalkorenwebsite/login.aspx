@@ -21,6 +21,7 @@
          </tr>
          </table>
         </form>
+    <%=stResult %>
            
 </asp:Content>
 

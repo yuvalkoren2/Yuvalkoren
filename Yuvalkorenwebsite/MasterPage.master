@@ -5,42 +5,56 @@
 <html>
 <head runat="server">
     <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body border="1">
+    <%if (Session["nihul"] == "ok" || Session["user"] == "ok")
+        {
+    %>
+    שלום <%=Session["name"] %>
+    <%} %>
     <h1>MOOVIES</h1>
     <table>
         <tr>
             <td>
+                <%if (Session["nihul"] == "ok" || Session["user"] == "ok")
+                    {
+                %>
                 <a href="form.aspx">form.aspx</a>
+                <%} %>
                 <a href="about.aspx">about.aspx</a>
                 <a href="gallery.aspx">gallery.aspx</a>
+
+                <%if (Session["nihul"] != "ok" && Session["user"] != "ok")
+                    {
+                %>
+
                 <a href="register.aspx">register.aspx</a>
                 <a href="login.aspx">login.aspx</a>
+                <%} %>
+
+                <%if (Session["nihul"] == "ok")
+                        {
+                %>
                 <a href="administration.aspx">administration.aspx</a>
-                <a href="simplesearch.aspx">administration.aspx</a>
-                <a href="complicatedsearch.aspx">complicatedsearch.aspx</a>
-                <a href="simplesearchlike.aspx">simplesearchlike.aspx</a>
-                <a href="complicatedsearchlike.aspx">complicatedsearchlike.aspx</a>
-                <a href="detailsUpdate.aspx">detailsUpdate.aspx</a>
+                <%} %>
+                <%if (Session["nihul"] == "ok" || Session["user"] == "ok")
+                    {
+                %>
                 <a href="exit.aspx">exit.aspx</a>
-                
-
-
-
+                <%} %>
             </td>
         </tr>
         <tr>
-    <td>
-        <center>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-  
-</asp:ContentPlaceHolder>
-            </center>
-    </td>
-</tr>
-        
-   </table>
+            <td>
+                <center>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </center>
+            </td>
+        </tr>
+
+    </table>
 </body>
 </html>
