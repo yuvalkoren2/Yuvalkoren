@@ -86,36 +86,36 @@
     <%-- כותרת האתר הראשית --%>
     <h1>MOVIES</h1>
 
-    <%-- תפריט הניווט של האתר (מחליף את השורה הראשונה בטבלה הישנה) --%>
+   <%-- תפריט הניווט של האתר (מעודכן עם דף האודות) --%>
     <nav>
         <%-- בדיקה: אם המשתמש מחובר (כמנהל או כמשתמש רגיל) - נציג לו את דף הטופס --%>
         <% if (Session["nihul"] == "ok" || Session["user"] == "ok") { %>
-            <a href="form.aspx">form.aspx</a>
+            <a href="form.aspx">form</a>
         <% } // סיום בדיקת משתמש מחובר לטופס %>
 
-        <%-- קישורים שפתוחים תמיד לכולם (דף אודות ודף גלריה) --%>
-        <a href="about.aspx">about.aspx</a>
-        <a href="gallery.aspx">gallery.aspx</a>
+        <%-- קישורים שפתוחים תמיד לכולם --%>
+        <a href="about.aspx">about</a>
+        <a href="developer.aspx">developer</a>
+        <a href="gallery.aspx">gallery</a>
 
         <%-- בדיקה: אם המשתמש מוגדר כאורח (לא מנהל מחובר ולא משתמש מחובר) --%>
         <% if (Session["nihul"] != "ok" && Session["user"] != "ok") { %>
             <%-- נציג לו אפשרות להירשם או להתחבר לאתר --%>
-            <a href="register.aspx">register.aspx</a>
-            <a href="login.aspx">login.aspx</a>
+            <a href="register.aspx">register</a>
+            <a href="login.aspx">login</a>
         <% } // סיום בדיקת אורח %>
 
         <%-- בדיקה: אם המשתמש מחובר ספציפית כמנהל (nihul) --%>
         <% if (Session["nihul"] == "ok") { %>
             <%-- נציג לו את דף הניהול הראשי --%>
-            <a href="administration.aspx">administration.aspx</a>
+            <a href="administration.aspx">administration</a>
         <% } // סיום בדיקת מנהל %>
 
         <%-- בדיקה: אם המשתמש מחובר (מנהל או רגיל), נציג לו כפתור התנתקות/יציאה --%>
         <% if (Session["nihul"] == "ok" || Session["user"] == "ok") { %>
-            <a href="exit.aspx">exit.aspx</a>
+            <a href="exit.aspx">exit</a>
         <% } // סיום בדיקת כפתור יציאה %>
     </nav>
-
     <%-- תיבת התוכן המרכזית (מחליפה את השורה השנייה בטבלה הישנה) --%>
     <div class="main-content">
         <%-- אזור דינמי ראשי: כאן יוצג התוכן הייחודי של כל דף בן שיורש מדף האב הזה --%>
