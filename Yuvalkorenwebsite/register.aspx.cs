@@ -40,6 +40,7 @@ public partial class register : System.Web.UI.Page
 
                 // הרצת השאילתה ב-App_Code לשמירת הנתונים
                 MyAdoHelper.DoQuery(insertQuery);
+                Response.Redirect("login.aspx");
 
                 // הצגת הודעת הצלחה למשתמש
                 stResult = string.Format("<p style='color: green;'>ברוך הבא {0}! ההרשמה בוצעה ונשמרה בהצלחה.</p>", firstName);
