@@ -1,46 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Data;
 
 public partial class form : System.Web.UI.Page
 {
-    // משתנה מחרוזת גלובלי שיכיל את הודעת ההצלחה ויוצג ב-HTML
     public string msg = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        // בדיקת אבטחה: הגנה על הדף מפני אורחים
-        if (Session["user"] != "ok" && Session["nihul"] != "ok")
+        if (Session["user"] == null && Session["nihul"] == null)
         {
             Response.Redirect("login.aspx");
         }
+    }
 
-        // בדיקה האם הדף עבר רענון כתוצאה מלחיצה על כפתור השליחה (PostBack)
-        if (Page.IsPostBack)
+    protected void btnSubmit_Click(object sender, EventArgs e)
+    {
+        string name = movieName.Text.Trim();
+        string poster = moviePoster.Text.Trim();
+        string genre = movieGenre.SelectedValue;
+
+        if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(genre))
         {
-            // שליפת הנתונים שהמשתמש הקליד בטופס באמצעות ה-name של השדות
-            string mName = Request.Form["movieName"];
-            string mPoster = Request.Form["moviePoster"];
-            string mGenre = Request.Form["movieGenre"];
+            msg = "נא למלא את כל השדות!";
+            return;
+        }
 
-            // בדיקה בסיסית שהמשתמש לא שלח טופס ריק
-            if (!string.IsNullOrEmpty(mName))
-            {
-                // בניית הודעת הצלחה מעוצבת שתקפוץ למשתמש על המסך
-                msg = "<div style='margin-top:20px; padding:15px; background-color:#d4edda; color:#155724; border:1px solid #c3e6cb; border-radius:4px; font-weight:bold;'>" +
-                      "הסרט \"" + mName + "\" מסוג (" + mGenre + ") הוסף לרשימה בהצלחה!" +
-                      "</div>";
-            }
-            else
-            {
-                // הודעת שגיאה במידה ושם הסרט הושאר ריק
-                msg = "<div style='margin-top:20px; padding:15px; background-color:#f8d7da; color:#721c24; border:1px solid #f5c6cb; border-radius:4px; font-weight:bold;'>\n" +
-                      "נא להזין את שם הסרט!\n" +
-                      "</div>";
-            }
+        try
+        {
+            // שימוש בשיטת ה-Replace להגנה מפני SQL Injection
+            string sqlInsert = string.Format("INSERT INTO tMovies (movieName, posterURL, genre) VALUES (N'{0}', N'{1}', N'{2}')",
+                name.Replace("'", "''"), poster.Replace("'", "''"), genre);
+
+            // כעת DoQuery תעבוד כי הוספנו אותה ל-MyAdoHelper
+            MyAdoHelper.DoQuery(sqlInsert);
+
+            msg = "הסרט נוסף בהצלחה!";
+
+            // ניקוי שדות
+            movieName.Text = "";
+            moviePoster.Text = "";
+        }
+        catch (Exception ex)
+        {
+            msg = "שגיאה בחיבור למסד הנתונים: " + ex.Message;
         }
     }
 }

@@ -9,6 +9,6 @@ public partial class about : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Write(MyAdoHelper.printDataTable("MyDB.mdf", "SELECT * FROM tUsers"));
+        Response.Write(MyAdoHelper.printDataTable("MyDB.mdf", "SELECT * FROM tUsers"));
     }
 }

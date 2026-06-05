@@ -1,58 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
+// זוהי המחלקה הראשית של הדף. היא משתמשת ב-MyAdoHelper שנמצא ב-App_Code באופן אוטומטי.
 public partial class register : System.Web.UI.Page
 {
-    // משתנה מחרוזת גלובלי להצגת הודעות שגיאה או הצלחה למשתמש ב-HTML
-    public string stResult = "";
+    // המשתנה שמציג את התוצאה בדף ה-aspx
+    protected string stResult = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        // בדיקה האם הדף נטען כתוצאה משליחת הטופס (PostBack)
+        // קוד זה רץ רק כאשר המשתמש לוחץ על כפתור השליחה (PostBack)
         if (Page.IsPostBack)
         {
-            // שליפת הנתונים מהשדות הקיימים בטופס ה-HTML שלך
-            string fn = Request.Form["firstname"];
-            string ln = Request.Form["lastname"];
+            // שליפת הנתונים משדות הקלט של ה-HTML
+            string firstName = Request.Form["firstname"];
+            string lastName = Request.Form["lastname"];
             string email = Request.Form["Email"];
             string password = Request.Form["Password"];
-            string genres = Request.Form["genre"]; // מקבל את הז'אנר שנבחר (או כמות סרטים אם שינית ב-HTML)
 
-            // שלב 1: בדיקה האם המשתמש כבר קיים במערכת לפי עמודת gmail בטבלת tUsers
-            string sqlCheck = "SELECT * FROM tUsers WHERE gmail = N'" + email + "'";
+            // שליפת תיבות הסימון של ז'אנר הסרטים (name="genre")
+            // אם המשתמש לא בחר כלום, נכניס מחרוזת ריקה כדי שזה לא יהיה NULL
+            string userGenres = Request.Form["genre"] ?? "";
 
-            // בדיקה מול מסד הנתונים האמיתי שלך: MyDB.mdf
-            bool exists = MyAdoHelper.IsExist(sqlCheck);
+            // בדיקה מול מסד הנתונים האם האימייל כבר קיים
+            string checkQuery = string.Format("SELECT * FROM tUsers WHERE gmail = '{0}'", email);
 
-            // אם המשתמש כבר קיים - נציג הודעת שגיאה ונפסיק את התהליך
-            if (exists)
+            // הבדיקה מול מחלקת העזר שמגיעה מ-App_Code
+            if (MyAdoHelper.IsExist(checkQuery))
             {
-                stResult = "מייל שהוכנס קיים במערכת, הכנס אימייל חדש";
+                stResult = "<p style='color: red;'>כתובת האימייל הזו כבר רשומה במערכת.</p>";
             }
             else
             {
-                // שלב 2: בניית שאילתת INSERT עם שמות העמודות המדויקים של טבלת tUsers שלך
-                string sqlInsert = "INSERT INTO tUsers (firstname, lastname, gmail, password, checkbox) VALUES (" +
-                                   "N'" + fn + "', " +
-                                   "N'" + ln + "', " +
-                                   "N'" + email + "', " +
-                                   "N'" + password + "', " +
-                                   "N'" + genres + "'" +
-                                   ")";
+                // תיקון השגיאה: הוספת העמודה [checkbox] לשאילתה והזרקת הערך של ה-userGenres לתוכה
+                string insertQuery = string.Format(
+                    "INSERT INTO tUsers (firstname, lastname, gmail, [password], [checkbox]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')",
+                    firstName, lastName, email, password, userGenres
+                );
 
-                // הרצת שאילתת ההרשמה מול מסד הנתונים האמיתי שלך: MyDB.mdf
-                MyAdoHelper.DoQuery("MyDB.mdf", sqlInsert);
+                // הרצת השאילתה ב-App_Code לשמירת הנתונים
+                MyAdoHelper.DoQuery(insertQuery);
 
-                // שלב 3: יצירת משתני Session כדי לחבר את המשתמש אוטומטית ולעדכן את תפריט הניווט למעלה
-                Session["user"] = "ok";
-                Session["name"] = fn; // שומר את השם הפרטי בשביל הודעת ה"שלום יובל" בתפריט
-
-                // הפניית המשתמש המחובר באופן אוטומטי חזרה לדף הבית
-                Response.Redirect("about.aspx");
+                // הצגת הודעת הצלחה למשתמש
+                stResult = string.Format("<p style='color: green;'>ברוך הבא {0}! ההרשמה בוצעה ונשמרה בהצלחה.</p>", firstName);
             }
         }
     }
