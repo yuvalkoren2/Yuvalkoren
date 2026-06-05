@@ -42,7 +42,7 @@
             errorEl.innerHTML = "";
 
             // הצגת התראת alert עם מה שהוקלד (כמו בקוד המקורי שלך)
-            alert(firstNameString);
+           // alert(firstNameString);
 
             // בדיקה אם השדה ריק (לאחר הסרת רווחים)
             if (firstNameString.trim() == "") {
@@ -207,7 +207,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1>Register to Yuval Koren's website</h1>
 
-    <form runat="server" method="post">
+    <form runat="server" method="post" onsubmit="return checkAll();">
         <table style="width: 100%; max-width: 400px;">
             <tr>
                 <td><label>First Name</label></td>

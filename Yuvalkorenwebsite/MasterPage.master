@@ -2,7 +2,6 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
     <%-- כותרת הדף שתופיע בלשונית של הדפדפן --%>
@@ -105,10 +104,10 @@
             <a href="login.aspx">login</a>
         <% } // סיום בדיקת אורח %>
 
-        <%-- בדיקה: אם המשתמש מחובר ספציפית כמנהל (nihul) --%>
+        <%-- בדיקה ספציפית: אם המשתמש מחובר כמנהל (nihul) --%>
         <% if (Session["nihul"] == "ok") { %>
-            <%-- נציג לו את דף הניהול הראשי --%>
-            <a href="administration.aspx">administration</a>
+            <%-- שינוי: הקישור שונה מ-administration ל-manager ומפנה ל-manager.aspx --%>
+            <a href="manager.aspx">manager</a>
         <% } // סיום בדיקת מנהל %>
 
         <%-- בדיקה: אם המשתמש מחובר (מנהל או רגיל), נציג לו כפתור התנתקות/יציאה --%>
@@ -116,6 +115,7 @@
             <a href="exit.aspx">exit</a>
         <% } // סיום בדיקת כפתור יציאה %>
     </nav>
+
     <%-- תיבת התוכן המרכזית (מחליפה את השורה השנייה בטבלה הישנה) --%>
     <div class="main-content">
         <%-- אזור דינמי ראשי: כאן יוצג התוכן הייחודי של כל דף בן שיורש מדף האב הזה --%>
