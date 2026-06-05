@@ -6,7 +6,7 @@
 <html>
 <head runat="server">
     <%-- כותרת הדף שתופיע בלשונית של הדפדפן --%>
-    <title>MOOVIES</title>
+    <title>MOVIES</title>
     
     <%-- אזור דינמי שמאפשר לדפים הבנים להכניס אלמנטים משלהם לתוך ה-head (כמו עיצוב ייחודי או סקריפטים) --%>
     <asp:ContentPlaceHolder ID="head" runat="server">

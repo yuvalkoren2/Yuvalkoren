@@ -207,7 +207,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1>Register to Yuval Koren's website</h1>
 
-    <form runat="server" method="post" onSubmit="return checkAll();">
+    <form runat="server" method="post">
         <table style="width: 100%; max-width: 400px;">
             <tr>
                 <td><label>First Name</label></td>
@@ -247,22 +247,42 @@
 
     <hr />
 
-    <h2>Movie Gallery</h2>
+  <h2>Movie Gallery</h2>
     
+    <%-- קבוצת סרטי מד"ב - מגיבים ל-movie_interstellar ב-JavaScript הקיים שלך --%>
     <div id="movie_interstellar" style="margin-bottom: 15px;">
-        <img src="https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg" alt="Interstellar" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
-        <span>Interstellar (Sci-Fi)</span>
+        <div style="margin-bottom: 10px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg" alt="Interstellar" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
+            <span>Interstellar (Sci-Fi)</span>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg" alt="Inception" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
+            <span>Inception (Sci-Fi)</span>
+        </div>
     </div>
 
+    <%-- קבוצת סרטי אקשן - מגיבים ל-movie_avatar ב-JavaScript הקיים שלך --%>
     <div id="movie_avatar" style="margin-bottom: 15px;">
-        <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Avatar_%282009_film%29_poster.jpg" alt="Avatar" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
-        <span>Avatar (Action)</span>
+        <div style="margin-bottom: 10px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Avatar_%282009_film%29_poster.jpg" alt="Avatar" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
+            <span>Avatar (Action)</span>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg" alt="The Dark Knight" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
+            <span>The Dark Knight (Action)</span>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/3d/The_Lion_King_poster.jpg" alt="The Lion King" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
+            <span>The Lion King (Action)</span>
+        </div>
     </div>
 
+    <%-- קבוצת סרטי רומנטיקה - מגיבים ל-movie_titanic ב-JavaScript הקיים שלך --%>
     <div id="movie_titanic" style="margin-bottom: 15px;">
-        <img src="https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png" alt="Titanic" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
-        <span>Titanic (Romance)</span>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png" alt="Titanic" style="height: 150px; vertical-align: middle; margin-right: 10px;" />
+            <span>Titanic (Romance)</span>
+        </div>
     </div>
-
     <%=stResult %>
 </asp:Content>
