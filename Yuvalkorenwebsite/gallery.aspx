@@ -61,45 +61,16 @@
 
 <%-- אזור התוכן הראשי שיוזרק לתוך מרכז דף האב (במקום ה-ContentPlaceHolder1) --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <%-- מיכל הסרטים שמחזיק את 6 הסרטים ) --%>
+    
+    <%-- מיכל הסרטים הראשי שומר על העיצוב הקיים שלך --%>
     <div class="movies-container">
 
-        <%-- כרטיס סרט 1: אווטאר --%>
-        <div class="movie-card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Avatar_%282009_film%29_poster.jpg" alt="Avatar" />
-            <h3>אווטאר</h3>
-        </div>
-
-        <%-- כרטיס סרט 2: טיטאניק --%>
-        <div class="movie-card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png" alt="Titanic" />
-            <h3>טיטאניק</h3>
-        </div>
-
-        <%-- כרטיס סרט 3: בין כוכבים --%>
-        <div class="movie-card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg" alt="Interstellar" />
-            <h3>בין כוכבים</h3>
-        </div>
-
-        <%-- כרטיס סרט 4: התחלה (Inception) --%>
-        <div class="movie-card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg" alt="Inception" />
-            <h3>התחלה</h3>
-        </div>
-
-        <%-- כרטיס סרט 5: האביר האפל (The Dark Knight) --%>
-        <div class="movie-card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg" alt="The Dark Knight" />
-            <h3>האביר האפל</h3>
-        </div>
-
-        <%-- כרטיס סרט 6: מלך האריות (The Lion King) --%>
-        <div class="movie-card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/3/3d/The_Lion_King_poster.jpg" alt="The Lion King" />
-            <h3>מלך האריות</h3>
-        </div>
+        <%-- 
+           תגית הזרקה קצרה של ASP.NET (סימן השווה <%= %> משמש כקיצור לפקודת Response.Write).
+           היא לוקחת את כל מחרוזת ה-HTML הענקית של כרטיסי הסרטים שבנינו דינמית בתוך קוד ה-C# (במשתנה dynamicMovies),
+           ושותלת אותה ישירות במרכז הדף בזמן אמת, כך שכל הסרטים מופיעים על המסך בצורה אוטומטית.
+        --%>
+        <%= dynamicMovies %>
 
     </div>
-
 </asp:Content>

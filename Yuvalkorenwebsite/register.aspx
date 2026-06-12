@@ -40,7 +40,7 @@
 
             // איפוס הודעת השגיאה הקודמת
             errorEl.innerHTML = "";
-
+                                                                                                 
             // הצגת התראת alert עם מה שהוקלד (כמו בקוד המקורי שלך)
            // alert(firstNameString);
 
